@@ -14,12 +14,13 @@ public:
     QVector<QTcpSocket*> vSockets;
     int port = 5555;
 
-
 public slots:
     void incomingConnection(qintptr socketDescription);
     void disconnectSocket();
     void slotReadyRead();
 
+signals:
+    void userCountChanged();
 };
 
 #endif // TCPSERVER_H

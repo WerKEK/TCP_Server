@@ -15,12 +15,16 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    TCPServer server;
+
+    TCPServer *server;
+
+    void createTable();
 
 private slots:
     void on_pushButton_deleteUser_clicked();
-
     void on_pushButton_updateTable_clicked();
+
+    void fillTable();
 
 private:
     Ui::MainWindow *ui;

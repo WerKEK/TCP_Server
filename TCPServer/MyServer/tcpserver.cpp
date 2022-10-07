@@ -2,6 +2,7 @@
 #include <algorithm>
 
 
+
 TCPServer::TCPServer()
 {
     if(this->listen(QHostAddress::Any, port))
@@ -19,17 +20,18 @@ void TCPServer::incomingConnection(qintptr socketDescription)
     connect(socket, &QTcpSocket::disconnected, this, &TCPServer::disconnectSocket);
 
     vSockets.push_back(socket);
-    qDebug() << "Connected new user: " << socketDescription;
+
+    emit userCountChanged();
 }
 
 void TCPServer::disconnectSocket()
 {
     auto res = std::find(vSockets.begin(),vSockets.end(), socket);
-    vSockets.erase(res);
-
+    vSockets.erase(res);   
 
     socket->deleteLater();
-    qDebug() << "user disconnected";
+
+    emit userCountChanged();
 }
 
 void TCPServer::slotReadyRead()
