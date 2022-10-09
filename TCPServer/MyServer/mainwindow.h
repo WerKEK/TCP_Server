@@ -21,8 +21,7 @@ public:
     void createTable();
 
 private slots:
-    void on_pushButton_deleteUser_clicked();
-    void on_pushButton_updateTable_clicked();
+    void disconnectUser_clicked(int i);
 
     void fillTable();
 
