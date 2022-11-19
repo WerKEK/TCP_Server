@@ -21,7 +21,6 @@ private:
 
     QTcpServer server;
     QSet<QTcpSocket*> sSockets;
-    QTcpSocket* socket;
 
 
     int port = 5555;
